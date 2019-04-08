@@ -1,0 +1,44 @@
+header {
+    /*background-image: linear-gradient(to bottom right, #283747, #FF69B4);*/
+    background-color: #FF69B4;
+    padding: 11px;
+    padding-right: 21px;
+    padding-left: 21px;
+    flex-direction: row;
+    display: flex !important;
+    justify-content: space-between;
+}
+.Logo {
+    height: 30px;
+    width: 30px;
+    vertical-align: middle !important;
+}
+
+.logo-link {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.logo-text {
+    padding-left: 11px;
+    font-size: 18px;
+    vertical-align: middle !important;
+}
+
+.cart-logo {
+    height: 30px;
+    width: 30px;
+    vertical-align: middle !important;
+}
+
+.cart {
+    text-decoration: none !important;
+}
+span.my-cart {
+    padding-left: 5px;
+    vertical-align: middle !important;
+}
+
+.cart:hover {
+  color: white;  
+}
