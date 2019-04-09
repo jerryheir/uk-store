@@ -4,9 +4,23 @@ import { products, details } from './data';
 const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
+  componentDidMount(){
+    this.setProducts();
+  }
   state = {
-    products: products,
+    products: [],
     details: details
+  }
+
+  setProducts = () => {
+    let array = [];
+    products.forEach((item)=>{
+      const singleItem = {...item};
+      array = [...array, singleItem]
+    })
+    this.setState({
+      products: array
+    })
   }
   
   handleDetail = () =>{

@@ -3,18 +3,17 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ProductConsumer } from '../config/context';
+import PropTypes from 'prop-types';
 
 export default class Product extends Component {
-  
   render() {
     const { title, img, company, info, price, inCart, id } = this.props.value;
-    console.log(inCart)
     return (
       <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
           <div className="img-container p-5" onClick={()=>console.log('You clicked on the Image Container')}>
             <Link to="/details">
-              <img src={require(`../${img}`)} alt="Product" className="card-image-top"/>
+              <img src={require(`../${img}`)} alt="Product" className="card-img-top"/>
             </Link>
             <button 
             className="cart-btn" 
@@ -30,7 +29,7 @@ export default class Product extends Component {
                 {title}
               </p>
               <h5 className="text-blue font-italic mb-0">
-                <span className="mr-1">U+20A6</span>
+                <span className="mr-1">{'\u20A6'}</span>
                 {price}
               </h5>
           </div>
@@ -40,12 +39,24 @@ export default class Product extends Component {
   }
 }
 
+Product.propsTypes = {
+  value: PropTypes.shape({
+    id: PropTypes.string,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    inCart: PropTypes.bool
+  }).isRequired
+}
+
 const ProductWrapper = styled.div`
   .card {
     border-color: transparent;
     transition: all 1s linear;
   }
   .card-footer {
+    padding-left: 11px;
+    padding-right: 11px;
     background: transparent;
     border-top: transparent;
     transition: all 1s linear; 
@@ -63,7 +74,36 @@ const ProductWrapper = styled.div`
     position: relative;
     overflow: hidden;
   }
+  .card-img-top {
+    transition: all 1s linear;
+  }
   .img-container:hover .card-img-top {
     transform: scale(1.2);
   }
-`;
+  .cart-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.2rem 0.4rem;
+    background: #283747;
+    border: none;
+    color: #FF69B4;
+    font-size: 1.4rem;
+    border-radius: 0.5rem 0 0 0;
+    transform: translate(100%, 100%);
+    transition: all .5s linear; 
+  }
+  .img-container:hover .cart-btn {
+    transform: translate(0,0);
+  }
+  .cart-btn:hover {
+    color: #FFF;
+    cursor: pointer;
+  }
+  .mb-0 {
+    font-size: 14px;
+  }
+  .text-blue {
+    font-size: 21px;
+  }
+`

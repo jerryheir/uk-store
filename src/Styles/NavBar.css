@@ -7,6 +7,9 @@ header {
     flex-direction: row;
     display: flex !important;
     justify-content: space-between;
+    position:fixed;
+    width:100%;
+    z-index: 999;
 }
 .Logo {
     height: 30px;
@@ -16,7 +19,7 @@ header {
 
 .logo-link {
     text-decoration: none !important;
-    color: white !important;
+    color: #283747 !important;
 }
 
 .logo-text {
@@ -33,6 +36,7 @@ header {
 
 .cart {
     text-decoration: none !important;
+    color: #283747;
 }
 span.my-cart {
     padding-left: 5px;
