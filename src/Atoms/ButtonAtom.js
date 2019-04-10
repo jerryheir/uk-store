@@ -2,18 +2,19 @@ import styled from "styled-components";
 
 export const ButtonAtom = styled.div`
     text-transform: capitalize;
-    font-size: 1.4rem;
+    font-size: 16px;
     background: transparent;
     border: 0.05rem solid #FF69B4;
-    color: #FF69B4;
-    borderRadius: 0.3rem;
-    padding: 0.3rem 0.5rem;
+    border-color: ${props => props.cart ? "#283747" : "#FF69B4"};
+    color: ${props => props.cart ? "#283747" : "#FF69B4"};
+    border-radius: 0.3rem !important;
+    padding: 0.4rem 1rem;
     cursor: pointer;
     margin: 0.2rem 0.5rem 0.2rem 0;
     transition: all .5s ease-in-out;
     &:hover {
-        background: #FF69B4;
-        color: #283747;
+        background: ${props => props.cart ? "#283747" : "#FF69B4"};
+        color: #FFF;
     }
     &:focus {
         outline: none;

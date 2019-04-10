@@ -9,7 +9,8 @@ class ProductProvider extends Component {
   }
   state = {
     products: [],
-    details: details
+    details: details,
+    cart: []
   }
 
   setProducts = () => {
@@ -22,13 +23,29 @@ class ProductProvider extends Component {
       products: array
     })
   }
+
+  getItem = (id) => {
+    const products = this.state.products.find(item => item.id === id);
+    return products;
+  }
   
-  handleDetail = () =>{
-    console.log('Hello from detail');
+  handleDetail = (id) =>{
+    const product = this.getItem(id);
+    this.setState({
+      details: product
+    })
   }
 
-  addToCart = () =>{
-    console.log('Hello from add to cart');
+  addToCart = (id) =>{
+    let tempProducts = [...this.state.products];
+    const index = tempProducts.indexOf(this.getItem(id));
+    const product = tempProducts[index];
+    product.inCart = true;
+    product.count = 1;
+    const price = product.price;
+    product.total = price;
+
+    this.setState({ products: tempProducts, cart: [...this.state.cart, product]})
   }
 
   render() {
