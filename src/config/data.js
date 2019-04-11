@@ -56,14 +56,4 @@ export const products = [
     },
   ];
 
-  export const details = {
-      id: '0',
-      title: "Rose Petals XL",
-      img: "Images/logo.svg",
-      company: "LE BEAU BONQUET",
-      info: "Lorem ipsum dolor amet offal butcher quinoa sustainable...",
-      inCart: false,
-      price: 2000,
-      count: 0,
-      total: 0
-  };
+  export const details = {};

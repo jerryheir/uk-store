@@ -10,7 +10,12 @@ class ProductProvider extends Component {
   state = {
     products: [],
     details: details,
-    cart: []
+    cart: [],
+    modalOpen: false,
+    modalProduct: details,
+    cartSubTotal: 0,
+    cartTax: 0,
+    cartTotal: 0
   }
 
   setProducts = () => {
@@ -29,7 +34,7 @@ class ProductProvider extends Component {
     return products;
   }
   
-  handleDetail = (id) =>{
+  handleDetail = (id) => {
     const product = this.getItem(id);
     this.setState({
       details: product
@@ -48,13 +53,44 @@ class ProductProvider extends Component {
     this.setState({ products: tempProducts, cart: [...this.state.cart, product]})
   }
 
+  openModal = (id) => {
+    const product = this.getItem(id);
+    this.setState({ modalProduct: product, modalOpen: true })
+  }
+
+  closeModal = () => {
+    this.setState({ modalOpen: false })
+  }
+
+  increment = (id) => {
+    console.log('Increment clicked')
+  }
+
+  decrement = (id) => {
+    console.log('Decrement clicked')
+  }
+
+  removeItem = (id) => {
+    console.log('Removed clicked')
+  }
+
+  clearCart = (id) => {
+    console.log('Cart was cleared');
+  }
+
   render() {
     return (
       <ProductContext.Provider value={{
         ...this.state,
         value: "Hello from context...",
         handleDetail: this.handleDetail,
-        addToCart: this.addToCart
+        addToCart: this.addToCart,
+        openModal: this.openModal,
+        closeModal: this.closeModal,
+        increment: this.increment,
+        decrement: this.decrement,
+        removeItem: this.removeItem,
+        clearCart: this.clearCart
       }}>
           {this.props.children}
       </ProductContext.Provider>

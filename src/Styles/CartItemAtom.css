@@ -1,0 +1,19 @@
+.btn-black {
+    background: transparent;
+    text-transform: capitalize;
+    font-size: 0.8rem !important;
+    color: #283747;
+    border-radius: 0 !important;
+    border: 0.1rem solid #283747 !important;
+}
+
+.btn-black:hover {
+    background: #283747 !important;
+    color: #FFF !important;
+}
+
+.cart-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #FF69B4;
+}

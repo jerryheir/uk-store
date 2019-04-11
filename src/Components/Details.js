@@ -3,7 +3,7 @@ import { ProductConsumer } from "../config/context";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { ButtonAtom } from "../Atoms/ButtonAtom";
-import { products } from "../config/data";
+import EmptyAtom from '../Atoms/EmptyAtom';
 
 export default class Details extends Component {
   state = {
@@ -15,7 +15,7 @@ export default class Details extends Component {
       <ProductConsumer>
         {(value)=>{
           const { id, title, img, price, info, inCart, company } = value.details;
-          console.log(value)
+          if (value.details && id){
           return (
             <div className="container">
               <div className="row">
@@ -52,7 +52,8 @@ export default class Details extends Component {
                     cart
                     disabled={inCart ? true : false}
                     onClick={()=>{
-                      value.addToCart(id)
+                      value.addToCart(id);
+                      value.openModal(id);
                     }}
                     >
                       {inCart ? 'In Cart' : 'Add to Cart'}
@@ -62,6 +63,11 @@ export default class Details extends Component {
               </div>
             </div>
           )
+          } else {
+            return (
+              <EmptyAtom text={"YOU DID NOT SELECT ANY FLOWERS"} />
+            )
+          }
         }}
       </ProductConsumer>
     )
