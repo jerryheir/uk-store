@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../Styles/CartItemAtom.css";
 
 const CartItemAtom = ({ item, value }) => {
   const { id, title, img, price, total, count } = item;
@@ -51,7 +52,7 @@ const CartItemAtom = ({ item, value }) => {
       </div>
       <div className="col-10 mx-auto col-lg-2">
         <div className="cart-icon" onClick={()=>removeItem(id)}>
-          <i className="fas fa-trash" />
+          <i className="fa fa-trash-o" />
         </div>
       </div>
       <div className="col-10 mx-auto col-lg-2">
